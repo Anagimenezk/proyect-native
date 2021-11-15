@@ -13,6 +13,8 @@ class PostForm extends Component{
             url:'', //tiene que saber cual e sla url que nos devuelve la base de datsos que guardamos para pdoer crear la coleccion
         }
     }
+
+    //ESTO TIRA ERROR 
     submitPost(){
         console.log('posteando...');
         db.collection('posts').add({
@@ -21,14 +23,15 @@ class PostForm extends Component{
             createdAt: Date.now(),
             photo: this.state.url,
         })
-        .then( ()=>{ //Limpiar el form de carga
+        .then( (res)=>{ //Limpiar el form de carga
+            console.log(res);
             this.setState({
                 textoPost:'',
             })
             //Redirección
             this.props.drawerProps.navigation.navigate('Home')
         })
-        .catch()
+        .catch(error => console.log(error))
     }
 
     onImageUpload(url){
@@ -41,10 +44,10 @@ class PostForm extends Component{
     render(){
         return(
         <View style={styles.container}>
-           {/* {this.state.showCamera ?
+           {this.state.showCamera ?
 
             <MyCamera onImageUpload={(url)=> {this.onImageUpload(url)}} />
-           : */}
+           : 
                 <View style={styles.formContainer}>
                  <TextInput
                      style={styles.input}
@@ -59,7 +62,7 @@ class PostForm extends Component{
                     </TouchableOpacity>
                 </View>
     
-    {/* } */}
+     } 
         </View>
         )
     }

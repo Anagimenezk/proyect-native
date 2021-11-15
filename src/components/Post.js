@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Modal, Image} from 'react-native';
 import { db } from '../firebase/config';
 import firebase from 'firebase';
 
@@ -95,6 +95,11 @@ class Post extends Component{
         return(
             <View style={styles.contanier}>
              <Text>Texto del post: {this.props.postData.data.texto}</Text>
+             <Image
+             style={styles.image}
+             source={{uri:this.props.postData.data.photo }}
+             resizeMode='contain'
+             />
              <Text>user: {this.props.postData.data.owner} </Text>  
              <Text>likes: {this.state.likes} </Text>  
              {/* depediendo si esta en true or false el my like te meustra el me gusta o el quitar like */}
@@ -212,6 +217,9 @@ const styles = StyleSheet.create({
     },
     textButton:{
         color: '#fff'
+    },
+    image:{
+        height: 200
     }
 })
 
