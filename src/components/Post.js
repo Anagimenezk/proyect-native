@@ -94,27 +94,30 @@ class Post extends Component{
         console.log(this.props);
         return(
             <View style={styles.contanier}>
-             <Text>Texto del post: {this.props.postData.data.texto}</Text>
+        {/* CADA POST  */}
+
+            <Text style= {styles.user}>{this.props.postData.data.owner} </Text>  
              <Image
              style={styles.image}
              source={{uri:this.props.postData.data.photo }}
              resizeMode='contain'
              />
-             <Text>user: {this.props.postData.data.owner} </Text>  
-             <Text>likes: {this.state.likes} </Text>  
+
+              <Text style={styles.textoPost} >{this.props.postData.data.texto}</Text>
+             <Text style={styles.likes} >likes: {this.state.likes} </Text>  
              {/* depediendo si esta en true or false el my like te meustra el me gusta o el quitar like */}
          {this.state.myLike == false ? 
-             <TouchableOpacity onPress={()=>this.darLike()}>
+             <TouchableOpacity style={styles.touchable} onPress={()=>this.darLike()}>
                  <Text>Me gusta</Text>
              </TouchableOpacity>   :
 
-            <TouchableOpacity onPress={()=>this.quitarLike()}>
+            <TouchableOpacity style={styles.touchable} onPress={()=>this.quitarLike()}>
                 <Text>Quitar like</Text>
              </TouchableOpacity>   
                 }  
 
                 {/* ver modal  */}   
-                <TouchableOpacity onPress={()=> this.showModal()}>
+                <TouchableOpacity style={styles.touchable} onPress={()=> this.showModal()}>
                     <Text>Ver comentarios</Text>
                 </TouchableOpacity>
 
@@ -161,7 +164,7 @@ class Post extends Component{
                 <Text></Text>
                  }  
 
-               
+                
             </View>
         )
     }
@@ -220,6 +223,38 @@ const styles = StyleSheet.create({
     },
     image:{
         height: 200
+    },
+    textoPost:{
+        marginVertical: 4,
+        height: 10,
+        paddingHorizontal: 4,
+        paddingVertical: 4,
+    },
+    likes:{
+        marginVertical: 4,
+        height: 10,
+        paddingHorizontal: 4,
+        paddingVertical: 4,
+        fontWeight:'bold',
+    },
+    user:{
+        textAlign: 'left',
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop: 20,
+    },
+    touchable:{
+        textAlign: 'left',
+        width: 120,
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop: 10,
+        paddingHorizontal: 4,
+        paddingVertical: 4,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: '#a1a7ff',  
     }
 })
 

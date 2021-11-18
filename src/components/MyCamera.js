@@ -89,10 +89,10 @@ class MyCamera extends Component{
                     /> 
 
                     <View>
-                        <TouchableOpacity onPress={()=> this.savePhoto()}>
+                        <TouchableOpacity style={styles.touchable} onPress={()=> this.savePhoto()}>
                             <Text>Aceptar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=> this.clearPhoto()}>
+                        <TouchableOpacity style= {styles.touchable} onPress={()=> this.clearPhoto()}>
                             <Text>Rechazar</Text>
                         </TouchableOpacity>
 
@@ -108,7 +108,7 @@ class MyCamera extends Component{
                 ref={(reference)=> this.camera = reference} //referencia de que camara estas usando, para aclarar que estas usanod esta caamara
                 //la referewncia busca esta camara y al almacena en una porpiedad llamada this.camera
                 />
-                <TouchableOpacity style={styles.button} 
+                <TouchableOpacity style={styles.touchable} 
                 onPress={()=> this.takePicture()}>
                     <Text>
                         Sacar Foto
@@ -142,6 +142,19 @@ const styles= StyleSheet.create({
         flex:1,
         justifyContent:'center'
     },
+    touchable:{
+        flex:1,
+        justifyContent:'center',
+        padding: 10,
+        backgroundColor: '#a1a7ff',
+        marginTop: 30,
+        borderRadius: 4,
+    },
+    touchableText:{
+        fontWeight: 'bold',
+        fontSize: 10,
+        color:'#fff',
+        textAlign: 'center' }
     
 })
 

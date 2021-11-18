@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     },
     touchable:{
         padding: 10,
-        backgroundColor: '#dc3545',
+        backgroundColor: '#a1a7ff',
         marginTop: 30,
         borderRadius: 4,
     },
