@@ -34,9 +34,10 @@ class Menu extends Component{
 
     register(email, pass, username){
         auth.createUserWithEmailAndPassword(email, pass)
-            .then( ()=>{
+            .then( (res)=>{
                 console.log('Registrado');
-                auth.currentUser.updatedProfile({displayName: username}).then(()=> {
+                console.log(email,pass, username);
+              res.user.updateProfile({displayName: username}).then(()=> {
                     console.log(auth.currentUser.displayName)
                 })
             })
@@ -75,7 +76,7 @@ class Menu extends Component{
                 <Drawer.Navigator>
                     <Drawer.Screen name="Registro" component={()=><Register register={(email, pass,username)=>this.register(email, pass, username)} />} />
                    
-                    <Drawer.Screen name="Login" component={()=><Login login={(email, pass, username)=>this.login(email, pass)} />}/>
+                    <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)} />}/>
                 </Drawer.Navigator> :
                 <Drawer.Navigator>
                      <Drawer.Screen name="Home" component={()=><Home />} />

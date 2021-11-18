@@ -48,7 +48,7 @@ class Register extends Component{
                     {/* Botón submit 
                     cambio: en vez de poner submit en el boton, pongo el metodo register que traje desde el menu
                     */}
-                    <TouchableOpacity style={styles.touchable} onPress={ ()=> this.props.register(this.state.email, this.state.contrasenia)}>
+                    <TouchableOpacity style={styles.touchable} onPress={ ()=> this.props.register(this.state.email, this.state.contrasenia, this.state.username)}>
                         <Text  style={styles.boton}> Registrarse </Text>
                     </TouchableOpacity>
 

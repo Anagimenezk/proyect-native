@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
+import { auth } from '../firebase/config';
 
 class Profile extends Component{
   constructor(props){
@@ -12,9 +13,12 @@ class Profile extends Component{
     console.log(this.props.userData);
     return(
       <View style={styles.container}>
-          <Text style={styles.welcome}> Bienvenido: {this.props.userData.email}</Text>
+          <Text style={styles.welcome}> Bienvenido: {auth.currentUser.displayName}</Text>
+          <Text style={styles.element}> email: {this.props.userData.email}</Text>
           <Text style={styles.element}> Usuario creado el: {this.props.userData.metadata.creationTime}</Text>
           <Text style={styles.element}> Último login: {this.props.userData.metadata.lastSignInTime}</Text>
+          <Text>ACA VA CONTEO DE POSTEOS</Text>
+          <Text> Aca deberiamos tener flatlist de sus posteos con posibilidad de delete post </Text>
           <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
             <Text style={styles.touchableText}>Logout</Text>
           </TouchableOpacity>         
