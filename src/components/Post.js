@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, Modal, Image, FlatList, TextInput} from 'react-native';
 import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
+import { DrawerItemList } from '@react-navigation/drawer';
 
 
 
@@ -100,28 +101,32 @@ class Post extends Component{
              <Image
              style={styles.image}
              source={{uri:this.props.postData.data.photo }}
-             resizeMode='contain'
-             />
+             resizeMode='contain'/>
 
-              <Text style={styles.textoPost} >{this.props.postData.data.texto}</Text>
-             <Text style={styles.likes} >likes: {this.state.likes} </Text>  
-             {/* depediendo si esta en true or false el my like te meustra el me gusta o el quitar like */}
+            <Text style={styles.textoPost} >{this.props.postData.data.texto}</Text>
+
+            <Text style={styles.likes} >likes: {this.state.likes} </Text>  
+
+        <View style={styles.contenedorItems}>
+    {/* depediendo si esta en true or false el my like te meustra el me gusta o el quitar like */}
          {this.state.myLike == false ? 
+         
+
              <TouchableOpacity style={styles.touchable} onPress={()=>this.darLike()}>
                  <Text>Me gusta</Text>
              </TouchableOpacity>   :
 
             <TouchableOpacity style={styles.touchable} onPress={()=>this.quitarLike()}>
                 <Text>Quitar like</Text>
-             </TouchableOpacity>   
-                }  
+            </TouchableOpacity>  }  
 
-                {/* ver modal  */}   
-                <TouchableOpacity style={styles.touchable} onPress={()=> this.showModal()}>
-                    <Text>Ver comentarios</Text>
-                </TouchableOpacity>
+    {/* ver modal  */}   
+            <TouchableOpacity style={styles.touchable} onPress={()=> this.showModal()}>
+                <Text>Ver comentarios</Text>
+            </TouchableOpacity>
+        </View>
 
-                {/* MODAL DE COMENTARIOS  */}
+        {/* MODAL DE COMENTARIOS  */}
                 {this.state.showModal ? 
                 
                 <Modal 
@@ -192,7 +197,7 @@ const styles = StyleSheet.create({
     closeButton:{
         color:'#fff',
         padding:5,
-        backgroundColor: '#dc3545',
+        backgroundColor: '#a1a7ff',
         alignSelf:'flex-end',
         borderRadius:4,
         paddingHorizontal: 8,
@@ -209,7 +214,7 @@ const styles = StyleSheet.create({
         marginVertical:10,
     },
     button:{
-        backgroundColor:'#28a745',
+        backgroundColor:'#a1a7ff',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
@@ -255,7 +260,11 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#a1a7ff',  
-        backgroundColor: '#a1a7ff'
+        backgroundColor: '#a1a7ff',
+        marginHorizontal: 10,
+    },
+    contenedorItems:{
+        flexDirection:'row', 
     }
 })
 

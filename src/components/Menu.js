@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator} from '@react-navigation/drawer';
 
 import Home from '../screens/Home';
-import Buscador from '../screens/Buscador';
+import Buscador from './Buscador';
 import Register from '../screens/register';
 import Login from '../screens/Login';
 import Perfil from '../screens/Profile';

@@ -9,6 +9,7 @@ class Home extends Component{
     super(props);
     this.state ={
       posteos: [],
+
       
     }
   }
@@ -33,6 +34,10 @@ class Home extends Component{
       }
     )
   }
+
+
+
+
 
   render(){
     return(
