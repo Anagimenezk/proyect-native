@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         borderColor: '#28a745'
     },
     textButton:{
-        color: '#fff'
+        color: '#F4F4F4'
     }
 
 })

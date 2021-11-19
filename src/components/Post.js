@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal, Image} from 'react-native';
-import { db } from '../firebase/config';
+import {Text, View, StyleSheet, TouchableOpacity, Modal, Image, FlatList, TextInput} from 'react-native';
+import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
 
-import { auth } from '../firebase/config';
-import { FlatList, TextInput } from 'react-native-gesture-handler';
+
+
 
 class Post extends Component{
     constructor(props){
@@ -128,10 +128,10 @@ class Post extends Component{
                   style={styles.modalContainer}
                   visible= {this.state.showModal}
                   animationType='slide'
-                  transparent= {false} 
+                  transparent={false} 
                 >
                  {/* cerrar modal */}
-                     <TouchableOpacity onPress= {()=> this.hideModal()}>
+                     <TouchableOpacity onPress= {()=>this.hideModal()}>
                         <Text style={styles.closeButton}> X</Text>
                     </TouchableOpacity>
                 {  /* formulairo para nuevos comentarios */}  
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
         width: '97%',
         borderRadius: 4,
         padding: 5,
-        alignSelf: 'venter',
+        alignSelf: 'center',
         boxShadow: 'rgb(204 204 204) 0px 0px 9px 7px', //no anda
         marginTop: 20,
         marginBottom:10,
@@ -255,6 +255,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: '#a1a7ff',  
+        backgroundColor: '#a1a7ff'
     }
 })
 
