@@ -12,6 +12,7 @@ class Profile extends Component{
   render(){
     console.log(this.props.userData);
     return(
+    <View style={styles.principalContainer}>
       <View style={styles.container}>
           <Text style={styles.welcome}> Bienvenido: {auth.currentUser.displayName}</Text>
           <Text style={styles.element}> email: {this.props.userData.email}</Text>
@@ -22,7 +23,8 @@ class Profile extends Component{
           <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
             <Text style={styles.touchableText}>Logout</Text>
           </TouchableOpacity>         
-      </View>       
+      </View> 
+    </View>      
     )
   }
 }
@@ -30,7 +32,7 @@ class Profile extends Component{
 const styles = StyleSheet.create({
     container:{
         marginTop: 20,
-        marginHorizontal:10
+        marginHorizontal:10,
     },
     welcome:{
         fontSize:18,

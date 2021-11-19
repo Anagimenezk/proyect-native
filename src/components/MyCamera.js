@@ -88,12 +88,12 @@ class MyCamera extends Component{
                     source= {{uri:this.state.photo}}
                     /> 
 
-                    <View>
+                    <View style= {styles.contenedorItems }>
                         <TouchableOpacity style={styles.touchable} onPress={()=> this.savePhoto()}>
-                            <Text>Aceptar</Text>
+                            <Text style={styles.textButton} >Aceptar</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style= {styles.touchable} onPress={()=> this.clearPhoto()}>
-                            <Text>Rechazar</Text>
+                            <Text style={styles.textButton} >Rechazar</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -110,7 +110,7 @@ class MyCamera extends Component{
                 />
                 <TouchableOpacity style={styles.touchable} 
                 onPress={()=> this.takePicture()}>
-                    <Text>
+                    <Text style={styles.textButton}>
                         Sacar Foto
                     </Text>
                 </TouchableOpacity>
@@ -142,19 +142,37 @@ const styles= StyleSheet.create({
         flex:1,
         justifyContent:'center'
     },
+    textButton:{
+        color:'#fff',
+    },
     touchable:{
         flex:1,
         justifyContent:'center',
         padding: 10,
         backgroundColor: '#a1a7ff',
-        marginTop: 30,
+        marginVertical: 20,
+        marginHorizontal: 10, 
         borderRadius: 4,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#7478b8', 
+        backgroundColor: '#a1a7ff',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',  
+    },
+    textButton:{
+        color:'#fff'
+    },
+    contenedorItems:{
+        flexDirection:'row', 
     },
     touchableText:{
         fontWeight: 'bold',
         fontSize: 10,
         color:'#fff',
-        textAlign: 'center' }
+        textAlign: 'center' },
+    
     
 })
 

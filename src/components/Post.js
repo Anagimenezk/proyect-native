@@ -94,35 +94,50 @@ class Post extends Component{
     render(){
         console.log(this.props);
         return(
+        
+    <View style={styles.principalContainer}>
             <View style={styles.contanier}>
         {/* CADA POST  */}
-
-            <Text style= {styles.user}>{this.props.postData.data.owner} </Text>  
              <Image
              style={styles.image}
              source={{uri:this.props.postData.data.photo }}
              resizeMode='contain'/>
 
-            <Text style={styles.textoPost} >{this.props.postData.data.texto}</Text>
-
-            <Text style={styles.likes} >likes: {this.state.likes} </Text>  
-
+          <View style={styles.descriptionContainer}>
+            <Text style= {styles.user}>{this.props.postData.data.owner}: {this.props.postData.data.texto}</Text> 
+            
+        
+          </View>
         <View style={styles.contenedorItems}>
+        <View style={styles.contenedorLikes}>
+
+    <Text style={styles.likes}> {this.state.likes} </Text>  
     {/* depediendo si esta en true or false el my like te meustra el me gusta o el quitar like */}
          {this.state.myLike == false ? 
          
 
-             <TouchableOpacity style={styles.touchable} onPress={()=>this.darLike()}>
-                 <Text>Me gusta</Text>
+             <TouchableOpacity onPress={()=>this.darLike()}>
+                 <Image
+                 style={styles.imageLike}
+                 source={{uri:'https://img.icons8.com/ios/50/000000/like--v1.png'}}
+                 resizeMode='contain' />
+                 
              </TouchableOpacity>   :
 
-            <TouchableOpacity style={styles.touchable} onPress={()=>this.quitarLike()}>
-                <Text>Quitar like</Text>
+            <TouchableOpacity  onPress={()=>this.quitarLike()}>
+                <Image
+                style={styles.imageLike}
+                source={{uri:'https://img.icons8.com/color/48/000000/like--v3.png'}}
+                resizeMode='contain'
+                />
+                
             </TouchableOpacity>  }  
+
+        </View>
 
     {/* ver modal  */}   
             <TouchableOpacity style={styles.touchable} onPress={()=> this.showModal()}>
-                <Text>Ver comentarios</Text>
+                <Text style={styles.textButton}>Ver comentarios</Text>
             </TouchableOpacity>
         </View>
 
@@ -171,6 +186,7 @@ class Post extends Component{
 
                 
             </View>
+    </View>
         )
     }
 
@@ -178,12 +194,18 @@ class Post extends Component{
 
 
 const styles = StyleSheet.create({
+    principalContainer:{
+        backgroundColor:'#CEE5D0', 
+    },
     contanier:{
         marginBottom: 20,
         borderRadius:4,
         borderColor: "#ccc",
         borderWidth: 1,
         padding: 10,
+        marginVertical: 30,
+        marginHorizontal: 30, 
+        backgroundColor: '#fff'
     },
     modalContainer:{
         width: '97%',
@@ -221,13 +243,13 @@ const styles = StyleSheet.create({
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#7478b8'
     },
     textButton:{
         color: '#fff'
     },
     image:{
-        height: 200
+        height: 300
     },
     textoPost:{
         marginVertical: 4,
@@ -235,37 +257,58 @@ const styles = StyleSheet.create({
         paddingHorizontal: 4,
         paddingVertical: 4,
     },
-    likes:{
-        marginVertical: 4,
-        height: 10,
+    contenedorLikes:{
+        flexDirection: 'row',
+        width: '25%',
         paddingHorizontal: 4,
         paddingVertical: 4,
+    },
+    likes:{
+        height:20,
         fontWeight:'bold',
+        marginTop: 20,
+        marginLeft: 10, 
+        marginTop: 10,
+        
+    },
+    imageLike:{
+        height: 20, 
+        width: 25,
+        marginTop: 10,  
+        marginLeft: 2,
+        marginRight: 30,  
+        paddingHorizontal: 4,
+        paddingVertical: 4,
     },
     user:{
+        width: '80%',
         textAlign: 'left',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 15,
         marginTop: 20,
     },
     touchable:{
-        textAlign: 'left',
-        width: 120,
+        textAlign: 'center',
+        width: '35%',
         fontWeight: 'bold',
         fontSize: 20,
         marginTop: 10,
         paddingHorizontal: 4,
         paddingVertical: 4,
         borderRadius: 4,
-        borderWidth: 2,
+        borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#a1a7ff',  
+        borderColor: '#7478b8', 
         backgroundColor: '#a1a7ff',
-        marginHorizontal: 10,
+        marginHorizontal: 5,
     },
     contenedorItems:{
         flexDirection:'row', 
+    },
+    descriptionContainer:{
+        flexDirection: 'row', 
     }
+    
 })
 
 export default Post

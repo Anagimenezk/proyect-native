@@ -15,7 +15,8 @@ class Register extends Component{
 
     render(){
         return(
-            <View>
+        <View style={styles.principalContainer}>
+            <View style= {styles.container}>
                 <Text style={styles.titulo}>REGISTER</Text>
                 {/* Formulario de Login */}
                 <View style={styles.formContainer}>
@@ -56,12 +57,23 @@ class Register extends Component{
                 </View>
                 
             </View>
+        </View>
             )
             
     }
 }
 
 const styles = StyleSheet.create({
+
+    principalContainer:{
+        backgroundColor:'#CEE5D0', 
+        width:'100%',
+    },
+    container:{
+        marginVertical: 30,
+        marginHorizontal: 30, 
+        backgroundColor: '#fff',
+    },
     error:{
         color: 'red'
     },
@@ -93,7 +105,8 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#7478b8',       
+        borderColor: '#7478b8', 
+        color: '#fff'      
     },
     boton:{
         color: '#fff'
