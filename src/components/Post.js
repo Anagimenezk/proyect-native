@@ -200,12 +200,13 @@ const styles = StyleSheet.create({
     contanier:{
         marginBottom: 20,
         borderRadius:4,
-        borderColor: "#ccc",
+        borderColor: "#000000",
         borderWidth: 1,
         padding: 10,
         marginVertical: 30,
-        marginHorizontal: 30, 
-        backgroundColor: '#fff'
+        marginHorizontal: 30,
+        backgroundColor: '#adc7af' 
+       
     },
     modalContainer:{
         width: '97%',

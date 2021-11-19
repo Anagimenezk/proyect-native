@@ -108,7 +108,7 @@ class MyCamera extends Component{
                 ref={(reference)=> this.camera = reference} //referencia de que camara estas usando, para aclarar que estas usanod esta caamara
                 //la referewncia busca esta camara y al almacena en una porpiedad llamada this.camera
                 />
-                <TouchableOpacity style={styles.touchable} 
+                <TouchableOpacity style={styles.sacarFoto} 
                 onPress={()=> this.takePicture()}>
                     <Text style={styles.textButton}>
                         Sacar Foto
@@ -162,7 +162,23 @@ const styles= StyleSheet.create({
         textAlign: 'center',  
     },
     textButton:{
-        color:'#fff'
+        color:'#fff',
+        fontSize:15,
+    },
+    sacarFoto:{
+        flex:1,
+        justifyContent:'center',
+        backgroundColor: '#a1a7ff',
+        marginVertical: 30,
+        marginHorizontal: 200, 
+        borderRadius: 4,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: '#7478b8', 
+        backgroundColor: '#a1a7ff',
+        paddingHorizontal: 5,
+        paddingVertical: 5,
+        textAlign: 'center',  
     },
     contenedorItems:{
         flexDirection:'row', 
