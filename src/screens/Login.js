@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 
 
 class Login extends Component{
@@ -18,8 +18,7 @@ class Login extends Component{
 
     render(){
         return(
-            <ImageBackground source={require('../../assets/fondopag.jpeg')} style={styles.backgroundImage}>
-            <View style={styles.contenedor}>
+            <View>
                 <Text style={styles.titulo}>LOG IN</Text>
 
                 {/* Formulario de Login */}
@@ -29,7 +28,7 @@ class Login extends Component{
                     <TextInput
                         style={styles.field}
                         keyboardType='email-address'
-                        placeholder='Email'
+                        placeholder='email'
                         onChangeText= {text=> this.setState ({email: text})}
                     />
                     
@@ -37,7 +36,7 @@ class Login extends Component{
                     <TextInput
                         style={styles.field}
                         keyboardType='default'
-                        placeholder='Contrasenia'
+                        placeholder='contrasenia'
                         secureTextEntry= {true}
                         onChangeText= {text=> this.setState ({contrasenia: text})}
                     />
@@ -52,59 +51,43 @@ class Login extends Component{
 
                 </View>
             </View>
-            </ImageBackground>
             )
     }
 }
 
 const styles = StyleSheet.create({
-    contenedor:{
-        backgroundColor: 'white',
-        width: 800,
-        alignSelf: 'center',
-        marginTop: 100,
-        marginBottom: 450,
-        paddingBottom: 40
-    },
     titulo:{
         textAlign: 'center',
-        color: '#353E55',
         fontWeight: 'bold',
         fontSize: 20,
         marginTop: 20,
     },
     formContainer:{
-        marginHorizontal: 40,
-        padding: 40
+        marginHorizontal: 10,
+        padding: 10
     },
     field:{
-        borderColor: '#353E55',
+        borderColor: '#000000',
         borderWidth: 1,
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical: 10,
-        height: 40,
-        paddingHorizontal: 20,
-        paddingVertical: 15,
-        backgroundColor: '#F4F4F4'
+        height: 20,
+        paddingHorizontal: 10,
+        paddingVertical: 15
     },
     touchable:{
-        backgroundColor: '#B2D3BE',
+        backgroundColor: '#a1a7ff',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderRadius: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#698474',
-        paddingTop: 10,
-        paddingBottom: 10,
-        marginTop: 10,
+        borderColor: '#7478b8',       
     },
     boton:{
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 15   
+        color: '#fff'
     }    
 })
 
