@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal, Image, FlatList, TextInput} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Modal, Image, FlatList, TextInput, ImageBackground} from 'react-native';
 import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
 import { DrawerItemList } from '@react-navigation/drawer';
@@ -97,24 +97,23 @@ class Post extends Component{
         
     <View style={styles.principalContainer}>
             <View style={styles.contanier}>
-        {/* CADA POST  */}
-             <Image
-             style={styles.image}
-             source={{uri:this.props.postData.data.photo }}
-             resizeMode='contain'/>
+            {/* CADA POST  */}
+                <Text style={styles.nombre}>{this.props.postData.data.owner}</Text>
+                <Image
+                style={styles.image}
+                source={{uri:this.props.postData.data.photo }}
+                resizeMode='contain'/>
 
-          <View style={styles.descriptionContainer}>
-            <Text style= {styles.user}>{this.props.postData.data.owner}: {this.props.postData.data.texto}</Text> 
-            
-        
-          </View>
+            <View style={styles.descriptionContainer}>
+                <Text style= {styles.user}>{this.props.postData.data.owner}:</Text>
+                <Text style={styles.user1}> {this.props.postData.data.texto}</Text> 
+            </View>
         <View style={styles.contenedorItems}>
         <View style={styles.contenedorLikes}>
 
     <Text style={styles.likes}> {this.state.likes} </Text>  
     {/* depediendo si esta en true or false el my like te meustra el me gusta o el quitar like */}
          {this.state.myLike == false ? 
-         
 
              <TouchableOpacity onPress={()=>this.darLike()}>
                  <Image
@@ -129,15 +128,16 @@ class Post extends Component{
                 style={styles.imageLike}
                 source={{uri:'https://img.icons8.com/color/48/000000/like--v3.png'}}
                 resizeMode='contain'
-                />
-                
+                />  
             </TouchableOpacity>  }  
 
         </View>
 
     {/* ver modal  */}   
             <TouchableOpacity style={styles.touchable} onPress={()=> this.showModal()}>
-                <Text style={styles.textButton}>Ver comentarios</Text>
+            <Image style={styles.fotoComentario} source={{uri:'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-chat-instagram-flatart-icons-outline-flatarticons.png'}}
+                resizeMode='contain'/> 
+                <Text style={styles.textButton}>Ver comentarios </Text>
             </TouchableOpacity>
         </View>
 
@@ -186,6 +186,7 @@ class Post extends Component{
 
                 
             </View>
+            
     </View>
         )
     }
@@ -197,16 +198,17 @@ const styles = StyleSheet.create({
     principalContainer:{
         backgroundColor:'#CEE5D0', 
     },
+    nombre:{
+        fontWeight: 'bold',
+        fontSize: 15,
+        paddingTop: 10
+    },
     contanier:{
-        marginBottom: 20,
-        borderRadius:4,
-        borderColor: "#000000",
-        borderWidth: 1,
         padding: 10,
-        marginVertical: 30,
-        marginHorizontal: 30,
-        backgroundColor: '#adc7af' 
-       
+        marginVertical: 15,
+        marginHorizontal: 15,
+        marginBottom: 2,
+        backgroundColor: 'white' 
     },
     modalContainer:{
         width: '97%',
@@ -214,17 +216,16 @@ const styles = StyleSheet.create({
         padding: 5,
         alignSelf: 'center',
         boxShadow: 'rgb(204 204 204) 0px 0px 9px 7px', //no anda
-        marginTop: 20,
+        marginTop: 10,
         marginBottom:10,
     },
     closeButton:{
         color:'#fff',
         padding:5,
-        backgroundColor: '#a1a7ff',
+        backgroundColor: '#E2C2B9',
         alignSelf:'flex-end',
         borderRadius:4,
         paddingHorizontal: 8,
-
     },
     input:{
         height:20,
@@ -233,24 +234,24 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderColor: '#ccc',
         borderStyle: 'solid',
-        borderRadius: 6,
+        borderRadius: 4,
         marginVertical:10,
     },
     button:{
-        backgroundColor:'#a1a7ff',
+        backgroundColor:'#E2C2B9',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#7478b8'
+        borderColor: '#7478b8',
     },
     textButton:{
-        color: '#fff'
+        color: 'black',
     },
     image:{
-        height: 300
+        height: 250,
     },
     textoPost:{
         marginVertical: 4,
@@ -281,33 +282,47 @@ const styles = StyleSheet.create({
         paddingHorizontal: 4,
         paddingVertical: 4,
     },
+    fotoComentario:{
+        height: 20, 
+        width: 25,
+    },
+    imageComent:{
+        height: 20, 
+        width: 20,
+    },
     user:{
-        width: '80%',
+        //width: '40%',
         textAlign: 'left',
         fontWeight: 'bold',
         fontSize: 15,
         marginTop: 20,
     },
+    user1:{
+        //width: '40%',
+        textAlign: 'left',
+        fontSize: 15,
+        marginTop: 20,
+    },
     touchable:{
         textAlign: 'center',
-        width: '35%',
+        //width: '50%',
         fontWeight: 'bold',
         fontSize: 20,
         marginTop: 10,
         paddingHorizontal: 4,
         paddingVertical: 4,
-        borderRadius: 4,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#7478b8', 
-        backgroundColor: '#a1a7ff',
+        flexDirection: 'row', 
         marginHorizontal: 5,
     },
     contenedorItems:{
         flexDirection:'row', 
+        paddingTop: 10
     },
     descriptionContainer:{
         flexDirection: 'row', 
+        borderTopWidth: 1,
+        borderTopColor: 'rgba(52, 52, 52, 0.3)',
+        borderTopStyle: 'solid'
     }
     
 })

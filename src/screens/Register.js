@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity,ImageBackground} from 'react-native';
 
 
 class Register extends Component{
@@ -16,6 +16,7 @@ class Register extends Component{
     render(){
         return(
         <View style={styles.principalContainer}>
+            <ImageBackground source={require('../../assets/fondopag1.jpeg')}>
             <View style= {styles.container}>
                 <Text style={styles.titulo}>REGISTER</Text>
                 {/* Formulario de Login */}
@@ -25,7 +26,7 @@ class Register extends Component{
                     <TextInput
                         style={styles.field}
                         keyboardType='email-address'
-                        placeholder='email'
+                        placeholder='Email'
                         onChangeText= {text=> this.setState ({email: text})}
                     />
                             
@@ -33,7 +34,7 @@ class Register extends Component{
                     <TextInput
                         style={styles.field}
                         keyboardType='default'
-                        placeholder='username'
+                        placeholder='Username'
                         onChangeText= {text=> this.setState ({username: text})}
                     />
                     
@@ -41,7 +42,7 @@ class Register extends Component{
                     <TextInput
                         style={styles.field}
                         keyboardType='default'
-                        placeholder='contrasenia'
+                        placeholder='Contrasenia'
                         secureTextEntry= {true}
                         onChangeText= {text=> this.setState ({contrasenia: text})}
                     />
@@ -57,7 +58,9 @@ class Register extends Component{
                 </View>
                 
             </View>
+            </ImageBackground>
         </View>
+        
             )
             
     }
@@ -66,13 +69,14 @@ class Register extends Component{
 const styles = StyleSheet.create({
 
     principalContainer:{
-        backgroundColor:'#CEE5D0', 
         width:'100%',
     },
     container:{
         marginVertical: 30,
+        marginTop: 80,
         marginHorizontal: 30, 
-        backgroundColor: '#fff',
+        backgroundColor: 'none',
+        marginBottom: 400
     },
     error:{
         color: 'red'
@@ -82,34 +86,35 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         marginTop: 20,
+        color: 'rgb(240, 240, 240)'
     },
     formContainer:{
         marginHorizontal: 10,
-        padding: 10
+        padding: 15,
+        color: 'rgb(240, 240, 240)'
     },
     field:{
-        borderColor: '#000000',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderRadius: 6,
+        borderRadius: 4,
         marginVertical: 10,
-        height: 20,
-        paddingHorizontal: 10,
-        paddingVertical: 15
+        height: 40,
+        padding: 20,
+        backgroundColor: 'rgba(52, 52, 52, 0.2)',
+        color: 'rgb(240, 240, 240)'
     },
     touchable:{
-        backgroundColor: '#a1a7ff',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        padding: 10,
         textAlign: 'center',
         borderRadius: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#7478b8', 
-        color: '#fff'      
+        borderColor: 'rgba(52, 52, 52, 0.3)', 
+        color: 'rgba(52, 52, 52, 0.3)',
+        marginTop: 10      
     },
     boton:{
-        color: '#fff'
+        color: 'rgba(52, 52, 52, 0.4)',
+        fontSize: 15,
+        fontWeight: 'bold'
     }
 })
 

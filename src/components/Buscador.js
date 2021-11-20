@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
 import Post from '../components/Post';
 
-import { Searchbar } from 'react-native-paper';
+// import { Searchbar } from 'react-native-paper';
 import { db } from '../firebase/config';
 
 

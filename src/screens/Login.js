@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
 
 
 class Login extends Component{
@@ -18,7 +18,9 @@ class Login extends Component{
 
     render(){
         return(
-            <View>
+                <ImageBackground source={require('../../assets/fondopag1.jpeg')}>
+                    <View style={styles.contenedor}>
+
                 <Text style={styles.titulo}>LOG IN</Text>
 
                 {/* Formulario de Login */}
@@ -28,7 +30,7 @@ class Login extends Component{
                     <TextInput
                         style={styles.field}
                         keyboardType='email-address'
-                        placeholder='email'
+                        placeholder='Email'
                         onChangeText= {text=> this.setState ({email: text})}
                     />
                     
@@ -36,7 +38,7 @@ class Login extends Component{
                     <TextInput
                         style={styles.field}
                         keyboardType='default'
-                        placeholder='contrasenia'
+                        placeholder='Contrasenia'
                         secureTextEntry= {true}
                         onChangeText= {text=> this.setState ({contrasenia: text})}
                     />
@@ -50,44 +52,54 @@ class Login extends Component{
                     <Text>{this.props.errorLogin}</Text>
 
                 </View>
-            </View>
+                </View>
+                </ImageBackground>
+            
             )
     }
 }
 
 const styles = StyleSheet.create({
+    contenedor:{
+        marginVertical: 30,
+        marginTop: 80,
+        marginHorizontal: 30, 
+        backgroundColor: 'none',
+        marginBottom: 400,
+    },
     titulo:{
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 20,
         marginTop: 20,
+        color: 'rgb(240, 240, 240)'
     },
     formContainer:{
         marginHorizontal: 10,
         padding: 10
     },
     field:{
-        borderColor: '#000000',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderRadius: 6,
+        borderRadius: 4,
         marginVertical: 10,
-        height: 20,
-        paddingHorizontal: 10,
-        paddingVertical: 15
+        height: 40,
+        padding: 20,
+        backgroundColor: 'rgba(52, 52, 52, 0.2)',
+        color: 'rgb(240, 240, 240)'
     },
     touchable:{
-        backgroundColor: '#a1a7ff',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        padding: 10,
         textAlign: 'center',
         borderRadius: 4,
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#7478b8',       
+        borderColor: 'rgba(52, 52, 52, 0.3)', 
+        color: 'rgba(52, 52, 52, 0.3)',
+        marginTop: 10      
     },
     boton:{
-        color: '#fff'
+        color: 'rgba(52, 52, 52, 0.4)',
+        fontSize: 15,
+        fontWeight: 'bold'
     }    
 })
 
