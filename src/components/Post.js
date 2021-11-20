@@ -196,7 +196,7 @@ class Post extends Component{
 
 const styles = StyleSheet.create({
     principalContainer:{
-        backgroundColor:'#CEE5D0', 
+        backgroundColor:'rgba(72, 191, 63, 0.2)', 
     },
     nombre:{
         fontWeight: 'bold',
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
         marginVertical: 15,
         marginHorizontal: 15,
         marginBottom: 2,
-        backgroundColor: 'white' 
+        backgroundColor: 'white',
     },
     modalContainer:{
         width: '97%',
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
     },
     contenedorItems:{
         flexDirection:'row', 
-        paddingTop: 10
+        paddingTop: 10,
     },
     descriptionContainer:{
         flexDirection: 'row', 

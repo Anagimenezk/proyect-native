@@ -13,11 +13,13 @@ class Profile extends Component{
     console.log(this.props.userData);
     return(
     <View style={styles.principalContainer}>
-       <Image
-                style={styles.foto}
-                source={{uri:'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-profile-whatsapp-flatart-icons-outline-flatarticons.png'}}
-                resizeMode='contain'
-                />
+        <View style={styles.contenedorImagen}>
+          <Image
+                    style={styles.foto}
+                    source={{uri:'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-profile-whatsapp-flatart-icons-outline-flatarticons.png'}}
+                    resizeMode='contain'
+                    />
+          </View>
       <View style={styles.container}>
           <View style={styles.data}>
             <Text style={styles.welcome}> Bienvenido: {auth.currentUser.displayName}</Text>
@@ -40,11 +42,14 @@ const styles = StyleSheet.create({
     principalContainer:{
         backgroundColor: 'white',
     },
+    contenedorImagen:{
+      backgroundColor: '#F1F7E7',
+      marginTop: 40
+    },
     foto:{
       width: 150,
       height: 150,
       alignSelf: 'center',
-      marginTop: 20,
     },
     container:{
         marginTop: 10,
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
     },
     touchable:{
         padding: 10,
-        backgroundColor:'#B5CDA3',
+        backgroundColor:'#E2C2B9',
         marginTop: 30,
         borderRadius: 4,
         width: 100,

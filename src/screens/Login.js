@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground, Image} from 'react-native';
 
 
 class Login extends Component{
@@ -20,7 +20,8 @@ class Login extends Component{
         return(
                 <ImageBackground source={require('../../assets/fondopag1.jpeg')}>
                     <View style={styles.contenedor}>
-
+                        <Image style={styles.fotoL} source={{uri:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAABYklEQVRoge2aSWrDQBBFf5kslAPYGc6QXcgFckNfx5CV8SYQAknIcAVfwPHqe+EibhqChbp6kKi31696brW6kCUAQPIZwAPq8ArgXkSYEiIkOwA7m54GcykivykBF9aBfbH+AWdWQbVxkdZwkdZwkdaYjEh8IBZDD16xypvMirhIa2QVITknuSK5zFkHyLjZSS4APAG4y1UjLtjxRGeUOSf5pplfJK8tcs8VNRUhuSguoYXNRFTiPZC4seqzT3ETkUjiu6iENpAsUl1Cm0gSUYmPqhLayGARkleBxA/J21x99mlmkIiuxCfrswamMaIcX+wx7dYK98c4b63g+vpPLG3EH79RzvgPxCArnrPGN6IEeeUnXy3sY/yZ3HDPrK1y/yPbgSgiWwCPADYAtrnq/JFrRUozhREFgIu0RzUR673pK9IaLtIaLtIaLtIa8f8jOzLps6lqzADscfz4qxYv2kMSBycSuQANIpd0AAAAAElFTkSuQmCC'}}
+                         resizeMode='contain'/>
                 <Text style={styles.titulo}>LOG IN</Text>
 
                 {/* Formulario de Login */}
@@ -100,7 +101,12 @@ const styles = StyleSheet.create({
         color: 'rgba(52, 52, 52, 0.4)',
         fontSize: 15,
         fontWeight: 'bold'
-    }    
+    },
+    fotoL:{
+        width: 35,
+        height: 35,
+        alignSelf: 'center'
+    }  
 })
 
 export default Login; 
