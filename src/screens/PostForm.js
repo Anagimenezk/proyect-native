@@ -53,9 +53,9 @@ class PostForm extends Component{
                      style={styles.input}
                      onChangeText={(text)=>this.setState({textoPost: text})}
                         placeholder='Escribí aquí'
-                     keyboardType='default'
-                     multiline
-                     value={this.state.textoPost}    
+                        keyboardType='default'
+                        multiline
+                        value={this.state.textoPost}    
                         />
                  <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>
                      <Text style={styles.textButton}>Guardar</Text>    

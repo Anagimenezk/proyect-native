@@ -17,7 +17,7 @@ class Profile extends Component{
           <Image
                     style={styles.foto}
                     source={{uri:'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-profile-whatsapp-flatart-icons-outline-flatarticons.png'}}
-                    resizeMode='contain'
+                   resizeMode='contain'
                     />
           </View>
       <View style={styles.container}>
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
         marginHorizontal:10,
         backgroundColor: 'white',
         marginBottom: 400,
+  
     },
     data:{
       borderTopColor: '#444',
