@@ -131,17 +131,19 @@ class Post extends Component{
                 />  
             </TouchableOpacity>  }  
 
-        </View>
+            </View>
 
     {/* ver modal  */}   
-            <TouchableOpacity style={styles.touchable} onPress={()=> this.showModal()}>
-            <Image style={styles.fotoComentario} source={{uri:'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-chat-instagram-flatart-icons-outline-flatarticons.png'}}
-                resizeMode='contain'/> 
-                <Text style={styles.textButton}>Ver comentarios </Text>
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity style={styles.touchable} onPress={()=> this.showModal()}>
+                <Image style={styles.fotoComentario} source={{uri:'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-chat-instagram-flatart-icons-outline-flatarticons.png'}}
+                     resizeMode='contain'/> 
+                     <Text style={styles.textButton}>Ver comentarios </Text>
+                </TouchableOpacity>
+            </View>
 
         {/* MODAL DE COMENTARIOS  */}
+
+        
                 {this.state.showModal ? 
                 
                 <Modal 
@@ -179,11 +181,12 @@ class Post extends Component{
                             </Text>
                         </TouchableOpacity>
                     </View>
-                </Modal> :
+                </Modal>
+                 :
                 
                 <Text></Text>
                  }  
-
+            
                 
             </View>
             
@@ -211,12 +214,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     modalContainer:{
-        width: '97%',
+        width: '90%',
         borderRadius: 4,
         padding: 5,
         alignSelf: 'center',
         boxShadow: 'rgb(204 204 204) 0px 0px 9px 7px', //no anda
-        marginTop: 10,
+        marginTop: 20,
         marginBottom:10,
     },
     closeButton:{
