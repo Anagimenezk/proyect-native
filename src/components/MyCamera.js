@@ -110,9 +110,9 @@ class MyCamera extends Component{
                 />
                 <TouchableOpacity style={styles.sacarFoto} 
                 onPress={()=> this.takePicture()}>
-                    <Text style={styles.textButton}>
-                        Sacar Foto
-                    </Text>
+                    <Image style={styles.fotoCamara} source={{uri:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAC/0lEQVRoge2Yu08UURTGzwURE7DUBFBrH0QTH7VRjBZCFvEZo/4BBLLRQrQ2JAKWWhkT/Q+w0kak1Ag2YKIBO9RErQSLxejPYs5kZpdluXfuzK6J8yWbO5M53znft3OfI5IjR44c/xWA7cAD4BPuWALuA9sabWIP8D2BgUp8A3Y3ysQW4KMKeQbsB5od+JuAA8BzzbEItGapeT0hl1XAnI8AoBWY11yXkuZpSkoUkaPaPjHGlJImUe5jvT2WNI+PkSPavvLIEeK1todTyFUOoABMAys1BukK0JZCrTbg5wZ1XgJ9ronvWsw0X4ErviZiNa9qzo0wapuwoIQScBPoTEtsUgCdwIhqAui1IU1r8EgdNDoBuKXapmyClzW4ow7anAB0qLYflc9MlWBERIwxa55ZFtssImdEpCAiB0Vkhz5aEpG3IjIpIpPGmNWE+e30hSMqYZGzRKt9LSwCAwlr2OlLYgRoBu7FhM4BRWAfwdTaptdFfRZiAnBay7I2EpooAYO1xKnpIaIZaNyxVjZGtDuFJo478HpiZvodeOkbATYTjYlBWzEx/rByFwgmifT0ORq5GBsT1lv4GL+ZaOd73pJTVZ/PplFEJOwSD40xv13JynmktwVPLeVwfCMfNHyvR71uzfE+VX2ORsJdQLtN/Do5tmqOZcv4TLpWiES7gAruHx8BvkY+a7vTI8cubb/4CPE1MqvtSY8cp7R946mlHI5j5IKGz3tMv+80x7lU9SVYEBeVMmTDqeAXYwtiiyUnfSMaP6CUEtDjwDsBrCrXeg3JzIhyJmJmhmt1M4IPc8WYiTHHWpkaaQLGiTAPXCdY7Nr11w3ciI0JgDH+pW18jNuv/X0jLLh0Jxt9WRx1WyTYgxVE5JCUH3VnJTjqPjXG/EqYP/ujbj2wnr5q/XNFCQ3/nlUJoEsv13xFqWZkRttrmSlKjlDTTM0oERGgT99eieCDWMPfDNAF3CY6Gp+2JY5azDyNwh3Xf6EXmCI6czQSy8ALbN9Ejhw5cuSoF/4CDSo8XNEMsDoAAAAASUVORK5CYII='}}
+                    resizeMode='contain'
+                    />
                 </TouchableOpacity>
             </View>
              :
@@ -136,51 +136,44 @@ const styles= StyleSheet.create({
     },
     cameraBody:{
         flex: 7,
-
+    },
+    fotoCamara:{
+        width: 40,
+        height: 40,
+        alignSelf: 'center'
+    },
+    sacarFoto:{
+        backgroundColor: 'rgb(60, 60, 60)',
+        padding: 20,
     },
     button:{
-        flex:1,
-        justifyContent:'center'
+       
     },
     textButton:{
-        color:'#fff',
+        color:'#fff',  
     },
     touchable:{
         flex:1,
         justifyContent:'center',
         padding: 10,
-        backgroundColor: '#a1a7ff',
+        backgroundColor: '#BFD8B8',
         marginVertical: 20,
         marginHorizontal: 10, 
         borderRadius: 4,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#7478b8', 
-        backgroundColor: '#E2C2B9',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',  
+        fontWeight: 'bold'
     },
     textButton:{
         color:'#fff',
         fontSize:15,
     },
-    sacarFoto:{
-        flex:1,
-        justifyContent:'center',
-        backgroundColor: '#E2C2B9',
-        marginVertical: 30,
-        marginHorizontal: 20, 
-        borderRadius: 4,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#7478b8', 
-        paddingHorizontal: 5,
-        paddingVertical: 5,
-        textAlign: 'center',  
-    },
+   
     contenedorItems:{
         flexDirection:'row', 
+        backgroundColor: 'rgb(60, 60, 60)',
+        height: 80
     },
     touchableText:{
         fontWeight: 'bold',

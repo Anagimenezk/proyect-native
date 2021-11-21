@@ -225,30 +225,33 @@ const styles = StyleSheet.create({
     closeButton:{
         color:'#fff',
         padding:5,
-        backgroundColor: '#E2C2B9',
+        backgroundColor: '#6B7AA1',
         alignSelf:'flex-end',
         borderRadius:4,
-        paddingHorizontal: 8,
+        paddingRight: 8,
+        margin: 10,
+        fontWeight: 'bold'
     },
     input:{
-        height:20,
-        paddingVertical:15,
-        paddingHorizontal: 10,
+        height:45,
+        padding: 15,
         borderWidth:1,
         borderColor: '#ccc',
         borderStyle: 'solid',
+        borderWidth: 1,
         borderRadius: 4,
-        marginVertical:10,
+        margin: 20,
+        textAlign: 'left',
+        fontSize: 15
     },
     button:{
-        backgroundColor:'#E2C2B9',
+        backgroundColor:'#BFD8B8',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderRadius:4, 
-        borderWidth:1,
-        borderStyle: 'solid',
-        borderColor: '#7478b8',
+        width: 200,
+        alignSelf: 'center'
     },
     textButton:{
         color: 'black',
