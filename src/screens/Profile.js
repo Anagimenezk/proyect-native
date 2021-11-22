@@ -1,16 +1,59 @@
 import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
-import { auth } from '../firebase/config';
+import { db,auth } from '../firebase/config';
+import Post from '../components/Post';
+
 
 class Profile extends Component{
   constructor(props){
     super(props);
     this.state ={
-      
+      posteos:[],
+      showInfo: false,
     }
   }
+
+  componentDidMount(){
+    db.collection('posts').where('owner', '==', auth.currentUser.email)
+    .orderBy('createdAt','desc')
+    .onSnapshot(
+      docs => {
+        let posts = [];
+        docs.forEach(doc=> {
+          posts.push({
+            id: doc.id,
+            data: doc.data(),
+          })
+        })
+        this.setState({
+          posteos:posts,
+        })
+      })
+  }
+
+  // deletePost(id){
+  //   db.collection('posts').doc(id).delete()
+  //   .then((res)=>{
+  //     this.setState({
+  //       posts:posteos,
+  //     })
+  //   })
+  //   .catch((error)=> console.log(error)
+  //   )}
+
+    showInfo(){
+      this.setState({
+        showInfo:true,
+      })
+    }
+
+    hideInfo(){
+      this.setState({
+        showInfo: false, 
+      })
+    }
+
   render(){
-    console.log(this.props.userData);
     return(
     <View style={styles.principalContainer}>
         <View style={styles.contenedorImagen}>
@@ -23,15 +66,27 @@ class Profile extends Component{
       <View style={styles.container}>
           <View style={styles.data}>
             <Text style={styles.welcome}> Bienvenido: {auth.currentUser.displayName}</Text>
+          
           </View>
+
+          
+        
             <Text style={styles.element}> Email: {this.props.userData.email}</Text>
             <Text style={styles.element}> Usuario creado el: {this.props.userData.metadata.creationTime}</Text>
             <Text style={styles.element}> Último login: {this.props.userData.metadata.lastSignInTime}</Text>
-        
-          
+            <Text style={styles.element}> Posteos: { this.state.posteos.length}</Text>
+
           <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
             <Text style={styles.touchableText}>Logout</Text>
-          </TouchableOpacity>         
+          </TouchableOpacity>   
+
+          <Text>Mis Posteos</Text>
+          
+          <FlatList
+          data = {this.state.posteos}
+          keyExtractor={post => post.id}
+          renderItem = {({item}) => <Post postData= {item} /> }
+           />    
       </View> 
     </View>      
     )

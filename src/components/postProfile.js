@@ -15,7 +15,6 @@ class Post extends Component{
            myLike:false,
            showModal: false, //para la vista del modal 
            comment:'', //limpiar el campo cuando lo tenga armar, no aparezca el comentario que pusieorn antes
-           posteos:[],
         }
     }
     
@@ -92,17 +91,7 @@ class Post extends Component{
         }))
     }
 
-    deletePost(id){
-        db.collection('posts').doc(id).delete()
-        .then((res)=>{
-          this.setState({
-            posts:posteos,
-          })
-        })
-        .catch((error)=> console.log(error)
-        )}
-
-
+   
 
     render(){
         console.log(this.props);
@@ -112,7 +101,7 @@ class Post extends Component{
             <View style={styles.contanier}>
 
                 {this.props.postData.data.owner == auth.currentUser.email ?
-                 <TouchableOpacity onPress= {()=>this.deletePost(this.props.postData.data.id)}>
+                 <TouchableOpacity onPress= {()=>this.props.deletePost()}>
                     <Text style={styles.closeButton}> X</Text>
                 </TouchableOpacity>
                 :

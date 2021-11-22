@@ -3,7 +3,7 @@ import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, Flat
 import Post from '../components/Post';
 
 // import { Searchbar } from 'react-native-paper';
-import { db } from '../firebase/config';
+import { db,auth } from '../firebase/config';
 
 
 
@@ -11,7 +11,7 @@ class Buscador extends Component{
   constructor(props){
     super(props);
     this.state ={
-      posteos:'',
+      posteos:[],
       buscar:'', 
     }
   }
@@ -19,7 +19,6 @@ class Buscador extends Component{
   buscarPosteo(){
     db.collection('posts').where('owner','==', this.state.buscar)
     .orderBy('createdAt','desc')
-    .limit(10)
      .onSnapshot(
       docs => {
         console.log(docs);
@@ -41,28 +40,29 @@ class Buscador extends Component{
   render(){
     return(
   <View style={styles.buscador} >
-    <View style= {styles.formContainer}>
-       <TextInput style={styles.field}
-          keyboardType='default'
-          placeholder='Buscar Posteos'
-          onChangeText= {text=> this.setState ({buscar: text})}
-        />
-        <TouchableOpacity 
-          onPress={()=> this.buscarPosteo()}
-          style={styles.button}>
-             <Text style={styles.button}>Buscar</Text>
-        </TouchableOpacity>
-    </View>
+      <View style= {styles.formContainer}>
+         <TextInput style={styles.field}
+           keyboardType='email-adress'
+           placeholder='Buscar Posteos'
+           onChangeText= {(text)=> this.setState ({buscar: text})}
+          />
+          <TouchableOpacity 
+           onPress={()=> this.buscarPosteo()}
+            style={styles.button}>
+               <Text style={styles.button}>Buscar usuarios</Text>
+          </TouchableOpacity>
+      </View>
+    
     {this.state.posteos.length > 0 ?
-        <FlatList 
-          data= { this.state.posteos }
-          keyExtractor = { post => post.id}
-          renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
-        /> :
+          <FlatList 
+           data= { this.state.posteos }
+           keyExtractor = { post => post.id.toString()}
+           renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+          /> :
 
-       <Text>No se encontraron posteos de este usuario</Text> 
+        <Text>No se encontraron posteos de este usuario</Text> 
 
-    }
+      }
         
   </View>
       )
