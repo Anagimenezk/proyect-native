@@ -93,7 +93,7 @@ class Post extends Component{
     }
 
     deletePost(id){
-        db.collection('posts').doc(id).delete()
+        db.collection('posts').doc(this.props.postData.id).delete()
         .then((res)=>{
           this.setState({
             posts:posteos,
