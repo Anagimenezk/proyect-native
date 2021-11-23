@@ -30,6 +30,7 @@ class Buscador extends Component{
             data: doc.data(),
           })
           this.setState({
+            buscar: '',
             posteos: posts,
           })
         })
@@ -53,7 +54,7 @@ class Buscador extends Component{
           </TouchableOpacity>
       </View>
     
-    {this.state.posteos.length > 0 ?
+    {this.state.posteos.length >= 1 ?
           <FlatList 
            data= { this.state.posteos }
            keyExtractor = { post => post.id.toString()}
