@@ -79,6 +79,8 @@ class Profile extends Component{
           <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
             <Text style={styles.touchableText}>Logout</Text>
           </TouchableOpacity>   
+
+          <Text>Mis Posteos</Text>
           
           <FlatList
           data = {this.state.posteos}
