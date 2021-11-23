@@ -94,6 +94,7 @@ class Post extends Component{
 
     deletePost(id){
         db.collection('posts').doc(this.props.postData.id).delete()
+        //alert ('¿Estas seguro de que quieres borras el poseto?')
         .then((res)=>{
           this.setState({
             posts:posteos,
@@ -241,9 +242,10 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         padding: 5,
         alignSelf: 'center',
-        boxShadow: 'rgb(204 204 204) 0px 0px 9px 7px', //no anda
+        boxShadow: 'rgb(226, 194, 185) 0px 0px 9px 7px', //no anda
         marginTop: 20,
         marginBottom:10,
+        borderColor: '#E2C2B9',
     },
     closeButton:{
         color:'#fff',
