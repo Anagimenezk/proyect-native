@@ -91,13 +91,13 @@ class MyCamera extends Component{
 
                     <View style= {styles.contenedorItems }>
                         <TouchableOpacity style={styles.touchable} onPress={()=> this.savePhoto()}>
-                            <Text style={styles.textButton} >Aceptar</Text>
+                            <Image style={styles.logos} source={{uri:'https://img.icons8.com/office/160/000000/checked--v1.png'}} resizeMode='contain'/>
                         </TouchableOpacity>
                         <TouchableOpacity style= {styles.touchable} onPress={()=> this.clearPhoto()}>
-                            <Text style={styles.textButton} >Rechazar</Text>
+                            <Image style={styles.logos} source={{uri:'https://img.icons8.com/office/80/000000/cancel.png'}} resizeMode='contain'/>
                         </TouchableOpacity>
-
                     </View>
+
                     </React.Fragment>  
                     
                     :
@@ -147,40 +147,32 @@ const styles= StyleSheet.create({
         backgroundColor: 'rgb(60, 60, 60)',
         padding: 20,
     },
-    button:{
-       
+    contenedorItems:{
+        flexDirection:'row', 
+        display: 'flex',
+        justifyContent: 'center',
+        backgroundColor: 'rgb(60, 60, 60)',
+        height: 80,
+        alignItems: 'center'
     },
-    textButton:{
-        color:'#fff',  
+    logos:{
+        width: 40,
+        height: 40 
     },
     touchable:{
-        flex:1,
-        justifyContent:'center',
-        padding: 10,
-        backgroundColor: '#BFD8B8',
-        marginVertical: 20,
-        marginHorizontal: 10, 
-        borderRadius: 4,
-        paddingHorizontal: 10,
-        paddingVertical: 6,
-        textAlign: 'center',  
-        fontWeight: 'bold'
+        alignContent: 'center',
+        padding: 15,
     },
     textButton:{
         color:'#fff',
         fontSize:15,
     },
-   
-    contenedorItems:{
-        flexDirection:'row', 
-        backgroundColor: 'rgb(60, 60, 60)',
-        height: 80
-    },
     touchableText:{
         fontWeight: 'bold',
         fontSize: 10,
         color:'#fff',
-        textAlign: 'center' },
+        textAlign: 'center' 
+    },
     
     
 })
