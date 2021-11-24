@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, Image, ImageBackground, ActivityIndicator, FlatList, TextInput} from 'react-native';
 import { db,auth } from '../firebase/config';
 import Post from '../components/Post';
 
@@ -47,11 +47,13 @@ class Profile extends Component{
     return(
     <View style={styles.principalContainer}>
         <View style={styles.contenedorImagen}>
+          <ImageBackground source={require('../../assets/fondopag1.jpeg')}>
           <Image
                     style={styles.foto}
                     source={{uri:'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-profile-whatsapp-flatart-icons-outline-flatarticons.png'}}
                    resizeMode='contain'
                     />
+                </ImageBackground>
           </View>
       <View style={styles.container}>
           <View style={styles.data}>
@@ -94,7 +96,6 @@ const styles = StyleSheet.create({
     },
     contenedorImagen:{
       backgroundColor: '#F1F7E7',
-
     },
     foto:{
       width: 150,
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     },
     touchable:{
         padding: 10,
-        backgroundColor:'#E2C2B9',
+        backgroundColor:'#BFD8B8',
         marginTop: 30,
         borderRadius: 4,
         width: 100,
