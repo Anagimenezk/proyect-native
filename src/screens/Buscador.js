@@ -101,7 +101,7 @@ field:{
     borderRadius: 4,
     height: 40,
     padding: 20,
-    color: 'rgb(240, 240, 240)',
+    color: 'rgb(90, 90, 90)',
     borderColor: 'rgb(180, 180, 180)',
     borderWidth: 1,
     borderStyle: 'solid',
