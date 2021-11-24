@@ -47,6 +47,7 @@ class Menu extends Component{
     }
     
     login(email,pass){
+        
         auth.signInWithEmailAndPassword(email,pass)
             .then( response => {
                 this.setState({
@@ -54,9 +55,14 @@ class Menu extends Component{
                     user:response.user,
                 })
             })
-            .catch(e => console.log(e))
+            .catch(error => {
+                console.log(error)
+                this.setState({
+                errorMessage: error.message,
+                
+            })
+        })
     }
-
     logout(){
         auth.signOut()
             .then( (res)=>{
