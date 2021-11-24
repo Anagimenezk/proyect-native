@@ -223,7 +223,7 @@ class Post extends Component{
 
 const styles = StyleSheet.create({
     principalContainer:{
-        backgroundColor:'rgba(72, 191, 63, 0.2)', 
+        backgroundColor:'rgba(214, 214, 214, 0.45)', 
     },
     nombre:{
         fontWeight: 'bold',
@@ -232,9 +232,10 @@ const styles = StyleSheet.create({
     },
     contanier:{
         padding: 10,
-        marginVertical: 15,
-        marginHorizontal: 15,
-        marginBottom: 2,
+        marginVertical: 10,
+        marginHorizontal: 10,
+        marginBottom: 8,
+        marginTop: 8,
         backgroundColor: 'white',
     },
     modalContainer:{
@@ -283,6 +284,7 @@ const styles = StyleSheet.create({
     },
     image:{
         height: 250,
+        marginTop: 10,
     },
     textoPost:{
         marginVertical: 4,
@@ -347,13 +349,14 @@ const styles = StyleSheet.create({
     },
     contenedorItems:{
         flexDirection:'row', 
-        paddingTop: 10,
+        //paddingTop: 5,
     },
     descriptionContainer:{
         flexDirection: 'row', 
-        borderTopWidth: 1,
-        borderTopColor: 'rgba(52, 52, 52, 0.3)',
-        borderTopStyle: 'solid'
+        borderBottomWidth: 1,
+        borderBottomColor: 'rgba(52, 52, 52, 0.3)',
+        borderBottomStyle: 'solid',
+        paddingBottom: 15
     }
     
 })
