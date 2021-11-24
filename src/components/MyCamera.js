@@ -55,6 +55,7 @@ class MyCamera extends Component{
                             this.props.onImageUpload(url)
                         //le pasamos oor props la informaicon al padre (formulario) que es quien sabe guardar la info y mostrarla
                             this.setState({
+                            showCamera: true,
                             photo:'',
                             })
                     })
