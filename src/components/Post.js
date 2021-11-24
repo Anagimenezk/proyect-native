@@ -294,9 +294,7 @@ const styles = StyleSheet.create({
     },
     contenedorLikes:{
         flexDirection: 'row',
-        width: '25%',
-        paddingHorizontal: 4,
-        paddingVertical: 4,
+        marginTop: 4
     },
     likes:{
         height:20,
@@ -304,7 +302,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 10, 
         marginTop: 10,
-        
     },
     imageLike:{
         height: 20, 
@@ -349,7 +346,6 @@ const styles = StyleSheet.create({
     },
     contenedorItems:{
         flexDirection:'row', 
-        //paddingTop: 5,
     },
     descriptionContainer:{
         flexDirection: 'row', 
