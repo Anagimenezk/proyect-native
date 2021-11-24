@@ -44,6 +44,7 @@ class Buscador extends Component{
       <View style= {styles.formContainer}>
          <TextInput style={styles.field}
            keyboardType='email-adress'
+           value= {this.state.buscar}
            placeholder='Buscar Posteos'
            onChangeText= {(text)=> this.setState ({buscar: text})}
           />
