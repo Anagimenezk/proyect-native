@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator} from '@react-navigation/drawer';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from '../screens/Home';
 import Buscador from '../screens/Buscador';
 import Register from '../screens/register';
@@ -79,7 +79,13 @@ class Menu extends Component{
                     <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)} />}/>
                 </Drawer.Navigator> :
                 <Drawer.Navigator>
-                     <Drawer.Screen name="Home" component={()=><Home />} />
+                     <Drawer.Screen name="Home" options = {{drawerIcon:({focused, size}) => (
+              <Icon
+                 name="home"
+                 size={size}
+                 color={focused ? '#7cc' : '#ccc'}
+              />
+           ),}} component={()=><Home />} />
                      <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps}/>}/>
                       <Drawer.Screen name="Perfil" component={()=><Perfil userData={this.state.user} logout={()=>this.logout() } />} />
                       <Drawer.Screen name="Buscador" component={()=> <Buscador/>}/>
