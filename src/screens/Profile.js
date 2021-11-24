@@ -78,16 +78,21 @@ class Profile extends Component{
 
           <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
             <Text style={styles.touchableText}>Logout</Text>
-          </TouchableOpacity>   
+          </TouchableOpacity> 
 
-          <Text>Mis Posteos</Text>
-          
+            
+
+          <View style={styles.contenedorPosteos}>
+            <Image style={styles.fotoPost} source={{uri:'https://img.icons8.com/material-outlined/24/000000/gallery.png'}} resizeMode='contain'/>
+            <Text style={styles.posteos}> Mis Posteos</Text>
+          </View>
+
           <FlatList
           data = {this.state.posteos}
           keyExtractor={post => post.id}
           renderItem = {({item}) => <Post postData= {item} /> }
            />    
-      </View> 
+       </View>
     </View>      
     )
   }
@@ -99,7 +104,7 @@ const styles = StyleSheet.create({
     },
     contenedorImagen:{
       backgroundColor: '#F1F7E7',
-      marginTop: 40
+
     },
     foto:{
       width: 150,
@@ -110,8 +115,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginHorizontal:10,
         backgroundColor: 'white',
-        marginBottom: 400,
-  
+        paddingBottom: 20
     },
     data:{
       borderTopColor: '#444',
@@ -132,6 +136,11 @@ const styles = StyleSheet.create({
         marginBottom:10,
         alignSelf:'center',
     },
+    posteos:{
+      fontSize:15,
+      marginLeft:5,
+      fontWeight: 'bold',
+    },
     touchable:{
         padding: 10,
         backgroundColor:'#E2C2B9',
@@ -144,6 +153,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color:'#fff',
         textAlign: 'center'
+    },
+    fotoPost:{
+      width: 20,
+      height: 20,
+    },
+    contenedorPosteos:{
+      flexDirection: "row",
+      marginBottom: 15,
+      marginTop: 40,
+      padding: 10
     }
     
 });
