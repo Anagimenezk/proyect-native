@@ -86,9 +86,27 @@ class Menu extends Component{
                  color={focused ? '#7cc' : '#ccc'}
               />
            ),}} component={()=><Home />} />
-                     <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps}/>}/>
-                      <Drawer.Screen name="Perfil" component={()=><Perfil userData={this.state.user} logout={()=>this.logout() } />} />
-                      <Drawer.Screen name="Buscador" component={()=> <Buscador/>}/>
+                     <Drawer.Screen name ="New Post" options = {{drawerIcon:({focused, size}) => (
+              <Icon
+                 name="plus"
+                 size={size}
+                 color={focused ? '#7cc' : '#ccc'}
+              />
+           ),}}component={(drawerProps)=><PostForm drawerProps={drawerProps}/>}/>
+                      <Drawer.Screen name="Perfil" options = {{drawerIcon:({focused, size}) => (
+              <Icon
+                 name="user"
+                 size={size}
+                 color={focused ? '#7cc' : '#ccc'}
+              />
+           ),}}component={()=><Perfil userData={this.state.user} logout={()=>this.logout() } />} />
+                      <Drawer.Screen name="Buscador" options = {{drawerIcon:({focused, size}) => (
+              <Icon
+                 name="search"
+                 size={size}
+                 color={focused ? '#7cc' : '#ccc'}
+              />
+           ),}}component={()=> <Buscador/>}/>
                 </Drawer.Navigator>
             }
             </NavigationContainer>
