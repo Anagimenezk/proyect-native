@@ -27,6 +27,7 @@ class PostForm extends Component{
             console.log(res);
             this.setState({
                 textoPost:'',
+                showCamera: true,
             })
             //Redirección
             this.props.drawerProps.navigation.navigate('Home')
