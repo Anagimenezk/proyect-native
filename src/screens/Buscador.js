@@ -51,7 +51,7 @@ class Buscador extends Component{
           <TouchableOpacity 
            onPress={()=> this.buscarPosteo()}
             style={styles.button}>
-               <Text style={styles.button}>Buscar usuarios</Text>
+                <Image style={styles.logoBuscar} source={{uri:'https://img.icons8.com/ios/50/000000/search--v1.png'}} resizeMode='contain'/>
           </TouchableOpacity>
       </View>
     
@@ -62,7 +62,7 @@ class Buscador extends Component{
            renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
           /> :
 
-        <Text>No se encontraron posteos de este usuario</Text> 
+        <Text style={styles.mensaje}>No se encontraron posteos de este usuario</Text> 
 
       }
         
@@ -79,34 +79,48 @@ const styles = StyleSheet.create ({
   buscador:{
     padding: 15,
     paddingHorizontal:10,
+    backgroundColor: 'white',
+    paddingBottom: 600
   },
   button:{
-    color:'#fff',
-    padding:2,
-    backgroundColor: '#E2C2B9',
+    padding:10,
+    backgroundColor: '#BFD8B8',
     alignSelf:'flex-end',
-    borderRadius:4,
-    paddingHorizontal: 4,
     borderColor: '#28a745',
-    marginVertical: 8,
-    marginHorizontal: 10, 
+    marginLeft: 10,
+    borderRadius: 4
   },
   formContainer:{
     flexDirection: 'row',
-    marginHorizontal: 10,
     padding: 10
 },
 field:{
-    width: '90%',
-    borderColor: '#000000',
+    borderRadius: 4,
+    height: 40,
+    padding: 20,
+    color: 'rgb(240, 240, 240)',
+    borderColor: 'rgb(180, 180, 180)',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderRadius: 6,
-    marginVertical: 10,
-    height: 20,
     paddingHorizontal: 10,
-    paddingVertical: 15
+    paddingVertical: 15,
+    width: '80%',
+    fontSize: 15,
 },
+logoBuscar:{
+  width: 20,
+  height: 20,
+  padding: 10
+},
+contenedorItems:{
+  flexDirection: 'row',
+
+},
+mensaje:{
+  fontWeight: '400',
+  marginTop: 30,
+  marginLeft: 10
+}
 })
 
 
