@@ -18,7 +18,7 @@ class Buscador extends Component{
 
   buscarPosteo(){
     db.collection('posts').where('owner','==', this.state.buscar)
-    .orderBy('createdAt','desc')
+    //.orderBy('createdAt','desc')
      .onSnapshot(
       docs => {
         console.log(docs);
@@ -29,11 +29,14 @@ class Buscador extends Component{
             id: doc.id,   
             data: doc.data(),
           })
-          this.setState({
-            buscar: '',
-            posteos: posts,
-          })
+          
         })
+
+        this.setState({
+          buscar: '',
+          posteos: posts,
+        })
+        
         console.log(posts);
       }
     )
