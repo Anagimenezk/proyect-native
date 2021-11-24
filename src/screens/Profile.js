@@ -162,7 +162,14 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       marginBottom: 15,
       marginTop: 40,
-      padding: 10
+      padding: 10,
+      borderTopWidth: 1,
+      borderTopStyle: 'solid',
+      borderTopColor: 'rgba(52, 52, 52, 0.3)',
+      borderBottomWidth: 1,
+      borderBottomStyle: 'solid',
+      borderBottomColor: 'rgba(52, 52, 52, 0.3)',
+
     }
     
 });
