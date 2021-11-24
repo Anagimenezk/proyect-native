@@ -93,7 +93,7 @@ class Menu extends Component{
                         name="arrow-right"
                         size={size}
                         color={focused ? '#7cc' : '#ccc'}/>),
-                        }} component={()=><Login login={(email, pass)=>this.login(email, pass)} errorMassage={this.state.errorMassage}/>}/>
+                        }} component={()=><Login login={(email, pass)=>this.login(email, pass)} errorMessage={this.state.errorMessage}/>}/>
                 </Drawer.Navigator> :
                 
                 <Drawer.Navigator>
