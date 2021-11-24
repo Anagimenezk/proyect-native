@@ -90,10 +90,10 @@ class Menu extends Component{
                    
                     <Drawer.Screen name="Login" options = {{drawerIcon:({focused, size}) => (
                     <Icon
-                        name="login-variant"
+                        name="arrow-right"
                         size={size}
                         color={focused ? '#7cc' : '#ccc'}/>),
-                        }} component={()=><Login login={(email, pass)=>this.login(email, pass)} />}/>
+                        }} component={()=><Login login={(email, pass)=>this.login(email, pass)} errorMassage={this.state.errorMassage}/>}/>
                 </Drawer.Navigator> :
                 
                 <Drawer.Navigator>

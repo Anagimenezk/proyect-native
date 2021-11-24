@@ -50,7 +50,7 @@ class Login extends Component{
                     </TouchableOpacity>
 
                     {/* Mensaje de error */}
-                    <Text>{this.props.errorLogin}</Text>
+                    <Text style={styles.errorText}>{this.props.errorMessage}</Text>
 
                 </View>
                 </View>
