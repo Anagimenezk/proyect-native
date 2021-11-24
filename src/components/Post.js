@@ -20,7 +20,7 @@ class Post extends Component{
     }
     
     componentDidMount(){
-        if(this.props.postData.likes){
+        if(this.props.postData.data.likes){
             this.setState({
                 likes: this.props.postData.data.likes.length,
                 myLike: this.props.postData.data.likes.includes (auth.currentUser.email)
