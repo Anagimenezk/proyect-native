@@ -31,16 +31,6 @@ class Profile extends Component{
       })
   }
 
-  // deletePost(id){
-  //   db.collection('posts').doc(id).delete()
-  //   .then((res)=>{
-  //     this.setState({
-  //       posts:posteos,
-  //     })
-  //   })
-  //   .catch((error)=> console.log(error)
-  //   )}
-
     showInfo(){
       this.setState({
         showInfo:true,
