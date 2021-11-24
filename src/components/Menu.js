@@ -74,21 +74,34 @@ class Menu extends Component{
             <NavigationContainer>
             {this.state.loggedIn == false ?
                 <Drawer.Navigator>
-                    <Drawer.Screen name="Registro" component={()=><Register register={(email, pass,username)=>this.register(email, pass, username)} />} />
+                    <Drawer.Screen name="Registro" options = {{drawerIcon:({focused, size}) => (
+                    <Icon
+                        name="edit"
+                        size={size}
+                        color={focused ? '#7cc' : '#ccc'}/>),
+                        
+                        }}component={()=><Register register={(email, pass,username)=>this.register(email, pass, username)} />} />
                    
-                    <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)} />}/>
+                    <Drawer.Screen name="Login" options = {{drawerIcon:({focused, size}) => (
+                    <Icon
+                        name="login-variant"
+                        size={size}
+                        color={focused ? '#7cc' : '#ccc'}/>),
+                        }} component={()=><Login login={(email, pass)=>this.login(email, pass)} />}/>
                 </Drawer.Navigator> :
+                
                 <Drawer.Navigator>
-                     <Drawer.Screen name="Home" options = {{drawerIcon:({focused, size}) => (
-              <Icon
-                 name="home"
-                 size={size}
-                 color={focused ? '#7cc' : '#ccc'}
-              />
-           ),}} component={()=><Home />} />
-                     <Drawer.Screen name ="New Post" options = {{drawerIcon:({focused, size}) => (
-              <Icon
-                 name="plus"
+                    <Drawer.Screen name="Home" options = {{drawerIcon:({focused, size}) => (
+                    <Icon
+                        name="home"
+                        size={size}
+                        color={focused ? '#7cc' : '#ccc'}/>),
+                        }} component={()=><Home />} />
+                    
+                <Drawer.Screen name ="New Post" options = {{drawerIcon:({focused, size}) => (
+                
+                <Icon
+                 name="camera"
                  size={size}
                  color={focused ? '#7cc' : '#ccc'}
               />
