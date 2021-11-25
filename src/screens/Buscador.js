@@ -48,7 +48,7 @@ class Buscador extends Component{
          <TextInput style={styles.field}
            keyboardType='email-adress'
            value= {this.state.buscar}
-           placeholder='Buscar Posteos'
+           placeholder='Buscar usuarios'
            onChangeText= {(text)=> this.setState ({buscar: text})}
           />
           <TouchableOpacity 
