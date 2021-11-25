@@ -16,7 +16,7 @@ class MyCamera extends Component{
     }
 
     componentDidMount(){
-        Camera.requestMicrophonePermissionsAsync()
+        Camera.requestCameraPermissionsAsync()
         .then(()=>{
             this.setState({
                 permission: true,
@@ -31,7 +31,7 @@ class MyCamera extends Component{
         this.camera.takePictureAsync()
         .then((photo)=>{
             this.setState({
-                photo: photo.uri, //tiene adentro la ruta inetrna temporal a la foto
+                photo: photo.uri, //tiene adentro la ruta inetrna temporal a la foto para mostrarle al ususaeio 
                 showCamera: false,
             })
         })
