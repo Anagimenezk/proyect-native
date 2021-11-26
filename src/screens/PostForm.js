@@ -21,7 +21,7 @@ class PostForm extends Component{
             owner: auth.currentUser.email,
             texto: this.state.textoPost,
             createdAt: Date.now(),
-            photo: this.state.url,
+            photo: this.state.url, //incluimos esto ya que ahora los posteos van con foto
         })
         .then( (res)=>{ //Limpiar el form de carga
             console.log(res);
@@ -35,10 +35,10 @@ class PostForm extends Component{
         .catch(error => console.log(error))
     }
 
-    onImageUpload(url){
+    onImageUpload(url){ 
         this.setState({
             showCamera:false,
-            url: url,
+            url: url, //actualizamos datos del posteo con la url publica
         })
     }
 

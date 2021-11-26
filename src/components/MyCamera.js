@@ -8,8 +8,8 @@ class MyCamera extends Component{
     constructor(props){
         super(props)
         this.state = {
-            permission: false, //permisos de la camara en el dispositivo 
-            photo: '', //guardar url o uri de la foto
+            permission: false, 
+            photo: '', 
             showCamera:true,
         }
         this.camera //es la referencia a esta camara
@@ -28,35 +28,38 @@ class MyCamera extends Component{
     }
 
     takePicture(){
-        this.camera.takePictureAsync()
+        this.camera.takePictureAsync() //metodo interno
         .then((photo)=>{
             this.setState({
-                photo: photo.uri, //tiene adentro la ruta inetrna temporal a la foto para mostrarle al ususaeio 
-                showCamera: false,
+                photo: photo.uri, //guardar la ruta inetrna temporal
+                showCamera: false,//ocultar la camara
             })
         })
         .catch(error=>(console.log(error)))
     }
 
-    savePhoto(){
-        fetch(this.state.photo)
-        .then( res=> res.blob()) //recibe un repsonse para archivos binarios
-        .then( image => {
-                //vamos a guardar la ftoo en storage y obtener la url publica
 
-                //crear el nombre del archivo de la foto
-            const ref= storage.ref(`photos/${Date.now()}.jpg`) //creamos el nombre casi irreptible de nuestras fotos
-            ref.put(image)// lo que recibimso del priemr then. 
-            //put es metodo asincronico con su then y catch
-                .then(()=>{
+    savePhoto(){
+        fetch(this.state.photo) //obtiene la foto desde su bicacion temporal, guardarla y ibtener url publica, enviar el daro al posteo 
+        .then( res=> res.blob()) 
+        .then( image => { 
+        //vamos a guardar la ftoo en storage y obtener la url publica
+
+           
+            const ref= storage.ref(`photos/${Date.now()}.jpg`) 
+            //creamos ruta inerna que aparece en firebase con su identificador unico 
+            
+            ref.put(image)// guarde en storage lo que recibimso del priemr then
+   
+                .then(()=>{ //necesitamos que consiga la url para que storage sepa donde esta el archivo y la guarde 
                     ref.getDownloadURL()
-                    //metodo asincornico con the y catch
+                    //trae la url del storage para depsues usarla en el postForm
                         .then( url => {
-                            this.props.onImageUpload(url)
-                        //le pasamos oor props la informaicon al padre (formulario) que es quien sabe guardar la info y mostrarla
+                            this.props.onImageUpload(url) 
+                        
                             this.setState({
                             showCamera: true,
-                            photo:'',
+                            photo:'', //foto vacia para cuando volvamos a usar la camars
                             })
                     })
                         .catch( error=> console.log(error))
@@ -68,7 +71,6 @@ class MyCamera extends Component{
     }
 
     clearPhoto(){
-
         //vaciar el estado de la foto
 
         this.setState({
@@ -87,7 +89,7 @@ class MyCamera extends Component{
                     <Image
                     style={styles.cameraBody}
                     source= {{uri:this.state.photo}}
-                    /> 
+                    /> //preview photo
 
                     <View style= {styles.contenedorItems }>
                         <TouchableOpacity style={styles.touchable} onPress={()=> this.savePhoto()}>
@@ -104,13 +106,17 @@ class MyCamera extends Component{
 
             <View style={styles.container}>
                 <Camera
-                style= {styles.cameraBody}
+                style= {styles.cameraBody} 
+                //definimos estilos para que la camara comparta espacio con el boton que toma la foto
                 type=  {Camera.Constants.Type.back}
-                ref={(reference)=> this.camera = reference} //referencia de que camara estas usando, para aclarar que estas usanod esta caamara
+                //definimos camra frontal o trasera
+                ref={(reference)=> this.camera = reference} 
+                //referencia de que camara estas usando, para aclarar que estas usanod esta caamara
                 //la referewncia busca esta camara y al almacena en una porpiedad llamada this.camera
                 />
-                <TouchableOpacity style={styles.sacarFoto} 
-                onPress={()=> this.takePicture()}>
+                <TouchableOpacity 
+                    style={styles.sacarFoto} 
+                    onPress={()=> this.takePicture()}>
                     <Image style={styles.fotoCamara} source={{uri:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAC/0lEQVRoge2Yu08UURTGzwURE7DUBFBrH0QTH7VRjBZCFvEZo/4BBLLRQrQ2JAKWWhkT/Q+w0kak1Ag2YKIBO9RErQSLxejPYs5kZpdluXfuzK6J8yWbO5M53znft3OfI5IjR44c/xWA7cAD4BPuWALuA9sabWIP8D2BgUp8A3Y3ysQW4KMKeQbsB5od+JuAA8BzzbEItGapeT0hl1XAnI8AoBWY11yXkuZpSkoUkaPaPjHGlJImUe5jvT2WNI+PkSPavvLIEeK1todTyFUOoABMAys1BukK0JZCrTbg5wZ1XgJ9ronvWsw0X4ErviZiNa9qzo0wapuwoIQScBPoTEtsUgCdwIhqAui1IU1r8EgdNDoBuKXapmyClzW4ow7anAB0qLYflc9MlWBERIwxa55ZFtssImdEpCAiB0Vkhz5aEpG3IjIpIpPGmNWE+e30hSMqYZGzRKt9LSwCAwlr2OlLYgRoBu7FhM4BRWAfwdTaptdFfRZiAnBay7I2EpooAYO1xKnpIaIZaNyxVjZGtDuFJo478HpiZvodeOkbATYTjYlBWzEx/rByFwgmifT0ORq5GBsT1lv4GL+ZaOd73pJTVZ/PplFEJOwSD40xv13JynmktwVPLeVwfCMfNHyvR71uzfE+VX2ORsJdQLtN/Do5tmqOZcv4TLpWiES7gAruHx8BvkY+a7vTI8cubb/4CPE1MqvtSY8cp7R946mlHI5j5IKGz3tMv+80x7lU9SVYEBeVMmTDqeAXYwtiiyUnfSMaP6CUEtDjwDsBrCrXeg3JzIhyJmJmhmt1M4IPc8WYiTHHWpkaaQLGiTAPXCdY7Nr11w3ciI0JgDH+pW18jNuv/X0jLLh0Jxt9WRx1WyTYgxVE5JCUH3VnJTjqPjXG/EqYP/ujbj2wnr5q/XNFCQ3/nlUJoEsv13xFqWZkRttrmSlKjlDTTM0oERGgT99eieCDWMPfDNAF3CY6Gp+2JY5azDyNwh3Xf6EXmCI6czQSy8ALbN9Ejhw5cuSoF/4CDSo8XNEMsDoAAAAASUVORK5CYII='}}
                     resizeMode='contain'
                     />
